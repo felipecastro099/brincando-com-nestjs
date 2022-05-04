@@ -36,4 +36,16 @@ export class ProductRepository {
       },
     });
   }
+
+  async delete(id: number): Promise<void> {
+    await this._prisma.product.delete({
+      where: { id },
+    });
+  }
+
+  async findById(id: number): Promise<Product> {
+    return this._prisma.product.findUnique({
+      where: { id },
+    });
+  }
 }

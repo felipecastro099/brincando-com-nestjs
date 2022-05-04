@@ -1,8 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
+  HttpStatus,
   Param,
   Post,
   Put,
@@ -19,10 +21,10 @@ export class ProductController {
   constructor(private readonly _service: ProductService) {}
 
   @ApiOperation({ summary: 'Create a new product' })
-  @ApiResponse({ status: 201 })
+  @ApiResponse({ status: HttpStatus.CREATED })
   @ApiBody({ type: CreateProductDTO })
   @Post('')
-  @HttpCode(201)
+  @HttpCode(HttpStatus.CREATED)
   async createProduct(
     @Body() createProductDto: CreateProductDTO,
   ): Promise<Product> {
@@ -44,5 +46,12 @@ export class ProductController {
     @Body() updateProductDto: UpdateProductDto,
   ): Promise<Product> {
     return this._service.updateProduct(Number(id), updateProductDto);
+  }
+
+  @ApiOperation({ summary: 'Delete product' })
+  @ApiResponse({ status: HttpStatus.NO_CONTENT })
+  @Delete('/:id')
+  async deleteProduct(@Param('id') id: number): Promise<void> {
+    return this._service.deleteProduct(Number(id));
   }
 }
