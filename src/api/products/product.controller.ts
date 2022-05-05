@@ -11,8 +11,8 @@ import {
 } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Product } from '@prisma/client';
-import { CreateProductDTO } from './dtos/create-product.dto';
-import { UpdateProductDto } from './dtos/update-product.dto';
+import { CreateProductDTO } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductService } from './product.service';
 
 @ApiTags('Product')

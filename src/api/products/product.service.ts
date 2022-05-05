@@ -1,13 +1,8 @@
-import {
-  HttpCode,
-  HttpException,
-  HttpStatus,
-  Injectable,
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Product } from '@prisma/client';
-import { CreateProductDTO } from './dtos/create-product.dto';
-import { UpdateProductDto } from './dtos/update-product.dto';
-import { ProductRepository } from './products.repository';
+import { CreateProductDTO } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
+import { ProductRepository } from './infra/prisma/repositories/products.repository';
 
 @Injectable()
 export class ProductService {
